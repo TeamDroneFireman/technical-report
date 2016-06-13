@@ -96,6 +96,8 @@ Pour accélerer nos développements, nous avons décidé d'utiliser un Framework
 * Python
 * Google Earth
 
+L'utilisation du python pour le simulateur était motivé par la librairie fournie dans ce language par le constructeur des appareils du client (3D robotics). Pour rester dans la logique de notre architecture, nous avons fait le choix de rendre les ordres de missions ainsi que la création d'une nouvelle instance de drone accessible par une interface REST. L'utilisation de la librairie python __Flask__ nous a permis de mettre en place rapidement le serveur REST. Toute modification de la position du drone était par la suite répercuté de manière transparente via le service REST de gestion des drones en base de données.
+
 ## Choix techniques de l'application Android
 
 ### Architecture
@@ -122,7 +124,7 @@ L'injection de dépendances décrite précedemment aurait pu être réalisée av
 
 En ce qui concerne l'affichage de cartes, nous avions initalement choisi d'utiliser OSMDroid, lui même basé sur OpenStreetMaps. Cette librairie nous liberait d'une dépendance envers Google et nous permettait d'utiliser un code ouvert et libre. Cependant, au vu des performances supérieures du SDK Google Maps, et de certains crashes survenus à cause d'OSM Droid, nous avons du nous résoudre à passer sur la librairie Google Maps.
 
-La DAO a été réalisée avec l'aide de trois librairies. 
+La DAO a été réalisée avec l'aide de trois librairies.
 
 Tout d'abord, Square OkHttp qui nous a permis de réaliser facilement des requêtes HTTP, puis Gson qui a serialisé/déserialisé le contenu de ces requêtes. Cette partie d'intérogation REST aurait pu être réalisée avec d'autres librairies plus haut niveau telles que Retrofit ; mais celles-ci ne permettaient pas de rendre les appels aussi génériques que nous l'avons fait.
 

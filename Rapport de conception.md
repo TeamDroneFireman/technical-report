@@ -93,8 +93,19 @@ Pour accélerer nos développements, nous avons décidé d'utiliser un Framework
 
 ### Simulation
 
-* Python
-* Google Earth
+MAVLink est le protocole utilisé pour communiquer entre un drone et une station de commande.
+
+* SITL : Pour la partie drones, nous avons utilisé le simulateur SITL (Software in the Loop) qui va nous permettre de faire fonctionner sur notre pc, le microcontrôleur de type ArduPilot.Aussi nous lui avons ajouter le module MAVProxy qui va nous servir comme debeugeur grâce à son invite de commande qui nous permet d'envoyer des commande MAVLink, et la map qui  grâce à elle, on peut voir le déplacement du drone.
+
+* dronekit-python : Pour contrôler le drone, nous avons  utilisé la librairie dronekit-python mise à la disposition des développeurs par l'entreprise américaine 3D Robotics, cette librairie permet de :
+  - Faire fonctionner SITL d'une manière rapide et simple.
+  - Contrôler le drone par des scripts python.
+* Python : Les scriptes de contrôle du drone, écrites en python, permettent de :
+ - contrôler le déplacement du drone.
+ -  Mettre à jour la position du drone grâce à une api rest.
+ - Mettre à jour la photo grâce à une autre api rest.
+
+* Google Earth : la prise de la photo est faite par une capture d'écran du Google Earth.
 
 L'utilisation du python pour le simulateur était motivé par la librairie fournie dans ce language par le constructeur des appareils du client (3D robotics). Pour rester dans la logique de notre architecture, nous avons fait le choix de rendre les ordres de missions ainsi que la création d'une nouvelle instance de drone accessible par une interface REST. L'utilisation de la librairie python __Flask__ nous a permis de mettre en place rapidement le serveur REST. Toute modification de la position du drone était par la suite répercuté de manière transparente via le service REST de gestion des drones en base de données.
 
